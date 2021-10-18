@@ -3,11 +3,33 @@
   <entry>
     <title>Tensorflow1-基础</title>
     <url>/2021-10-17/Tensorflow1-%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="1-计算图-tf-Graph"><a href="#1-计算图-tf-Graph" class="headerlink" title="1. 计算图 tf.Graph"></a>1. 计算图 tf.Graph</h3><p>计算图是Tensorflow的计算模型，所有Tensorflow的程序都会通过计算图的形式表示。计算图上每一个节点都是一个运算，而计算图上的边则表示了运算之间的数据传递关系。</p>
+    <content><![CDATA[<h3 id="1-计算图-tf-Graph"><a href="#1-计算图-tf-Graph" class="headerlink" title="1. 计算图 tf.Graph"></a>1. 计算图 tf.Graph</h3><p><code>计算图</code>是Tensorflow的计算模型，所有Tensorflow的程序都会通过计算图的形式表示。计算图上每一个节点都是一个运算，而计算图上的边则表示了运算之间的数据传递关系。计算图上还保存了运行每个运算的设备信息以及运算之间的依赖关系。</p>
+<h3 id="2-张量"><a href="#2-张量" class="headerlink" title="2.张量"></a>2.张量</h3><p><code>张量</code>是Tensorflow的数据模型，Tensorflow的所有运算的输入输出都是张量。在这里，张量可以被简单地理解为多维数组，但是张量本身并不存储任何数据，它只是对运算结果的引用，保存了三个属性：name, shape, type</p>
+<h3 id="3-会话"><a href="#3-会话" class="headerlink" title="3.会话"></a>3.会话</h3><p><code>会话</code>是Tensorflow的运算模型，它管理了一个Tensorflow程序所拥有的系统资源，所有的运算都要通过会话执行。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建一个会话</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 模式1</span></span><br><span class="line">sess = tf.Session()</span><br><span class="line">sess.run(result)</span><br><span class="line">sess.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模式2</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(result)</span><br><span class="line">    <span class="built_in">print</span>(result.<span class="built_in">eval</span>())计算张量取值</span><br><span class="line">    <span class="comment">#在上下文中，不需要再调用sess.close()来关闭会话，退出时自动释放资源</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Tensorflow随机数生成函数</strong></p>
+<ul>
+<li><code>tf.random_normal</code> ：正态分布</li>
+<li><code>tf.truncated_normal</code>：正态分布，随机出来的值偏离平均值两个标准差会被重新随机</li>
+<li><code>tf.random_uniform</code>：均匀分布</li>
+<li><code>tf.random_gamma</code>：Gamma分布</li>
+</ul>
+<p><strong>Tensorflow常数生成函数</strong></p>
+<ul>
+<li><code>tf.zeros</code> ：产生全0数组  <code>tf.zeros([2,3],int32)</code></li>
+<li><code>tf.ones</code> ：产生全1数组  <code>tf.ones([2,3],int32)</code></li>
+<li><code>tf.fill</code> ：产生一个全为给定数字的数组 <code>tf.fill([2,3],9)</code></li>
+<li><code>tf.constant</code> ：产生一个给定值的常量 <code>tf.constant([1,2,3])</code></li>
+</ul>
 ]]></content>
       <categories>
         <category>Tensorflow</category>
       </categories>
+      <tags>
+        <tag>Tensorflow</tag>
+        <tag>深度学习</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
